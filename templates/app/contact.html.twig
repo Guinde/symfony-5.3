@@ -1,0 +1,15 @@
+{% extends 'app/_base-color.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .btn-success {
+            background: coral;
+        }
+    </style>
+{% endblock %}
+
+{% block body%}
+    <span class="btn btn-info">contact button</span>
+    <span class="btn btn-success">contact button</span>
+{% endblock %}

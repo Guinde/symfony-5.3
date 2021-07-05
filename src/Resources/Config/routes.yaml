@@ -1,0 +1,9 @@
+hello:
+    path: /hello/{name}
+    controller: App\Controller\HelloController::hello
+
+hello_somme:
+    path: /hello/{name}/{nombre1}/{nombre2}/{nombre3}
+    controller: App\Controller\HelloController::somme
+    defaults: 
+      nombre3: 0

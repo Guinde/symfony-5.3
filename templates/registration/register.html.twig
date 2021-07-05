@@ -1,0 +1,26 @@
+{% extends 'base' ~  (is_granted('ROLE_ADMIN') ? '-admin.html.twig' : '.html.twig') %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    {% for flashError in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+    {% endfor %}
+
+      <h1>
+        {{ (app.user.isAdmin is defined and app.user.isAdmin) ? 'Ajouter un admin' : 'Créer un compte' }}
+    </h1>
+
+    {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.email) }}
+        {% if registrationForm.plainPassword is defined %}
+            {{ form_row(registrationForm.plainPassword, {
+              label: 'Password'
+            }) }}
+        {% endif %}
+        {% if registrationForm.agreeTerms is defined %}
+            {{ form_row(registrationForm.agreeTerms) }}
+        {% endif %}
+        <button type="submit" class="btn">Register</button>
+    {{ form_end(registrationForm) }}
+{% endblock %}
