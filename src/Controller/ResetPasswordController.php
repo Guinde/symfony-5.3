@@ -40,15 +40,7 @@ class ResetPasswordController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            // $email = (new Email())
-            //     ->from('johnie.gursital@gmail.com')
-            //     ->to($user->getEmail())
-            //     ->subject('Time for Symfony Mailer !')
-            //     ->html('<a href="' . $token . '">password</a>');
-
-            // $mailer->send($email);
             return $this->redirectToRoute('reset_password', ['token' => $token]);
-
         }
 
         return $this->render('reset_password/index.html.twig', [

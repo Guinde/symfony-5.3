@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FactureController!{% endblock %}
+
+{% block body %}
+    <div class="jumbotron">
+        <a href="{{ path('facture_download', {facture: facture.id})}}">
+
+        </a>
+    </div>
+    <h6>N° de facture: {{ invoice.id }}</h6>
+    <h6>Created at {{ invoice.date | date('d-m-Y') }}</h6>
+
+    <h6>User: {{ invoice.user.name }}</h6>
+
+    <table>
+        <tr>
+            <th>Code produit</th>
+            <th>Produit</th>
+            <th>Qunatité</th>
+            <th>PU</th>
+            <th>Total</th>
+        </tr>
+        {% for invoiceLine in invoice.product %}
+            <tr>
+                <td>{{ invoiceLine.productId }}</td>
+                <td>{{ invoiceLine.productName }}</td>
+                <td>{{ invoiceLine.quantity }}</td>
+                <td>{{ invoiceLine.productPrice }}</td>
+                <td>{{ invoiceLine.total }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <h6>Total à payer : {{ invoice.total }}</h6>
+{% endblock %}

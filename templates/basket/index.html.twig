@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BasketController!{% endblock %}
+
+{% block body %}
+    {% for item in listBasket %}
+    <section class="content">
+        <div class="container">
+            <article>
+                <div class="row">
+                    <div class="meta-post">
+                        <ul>
+                            <li><i class="icon-file"></i></li>
+                            <li>Name: {{ item.product.name }} </li>
+                            <li>Quantité: {{ item.quantity }} </li>
+                            <li>Prix: {{ item.product.price }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+    {% endfor %}
+{% endblock %}
